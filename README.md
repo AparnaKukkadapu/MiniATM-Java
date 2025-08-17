@@ -43,6 +43,7 @@ How to Run
 ---
 
 Sample Output
+<img width="490" height="209" alt="image" src="https://github.com/user-attachments/assets/5668180c-6d59-4d49-85e4-25031c85a908" />
 
 Welcome to MiniAtm
 Choose one from the below options
