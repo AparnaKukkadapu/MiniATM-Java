@@ -1,82 +1,90 @@
 import java.util.Scanner;
 
 class MiniAtmProject {
+     
+        
+     void displayBalance(int balance)
+     {
+         System.out.println("Balance amount is " +balance);
+     }
+     int withdraw(int balance, int withdraw)
+     {
+         balance=balance-withdraw;
+         return balance;
+     }
+       int deposit(int balance, int deposit)
+     {
+         balance=balance+deposit;
+         return balance;
+     }
+ 
     public static void main(String[] args) {
                
+             MiniAtmProject miniatm=new MiniAtmProject();
+              Scanner scanner=new Scanner(System.in);
         int balance=10000;
-       
+        int withdraw=0;
+        int deposit=0;
         System.out.println("Welcome to MiniAtm");
-        Scanner scanner=new Scanner(System.in);         
-       
-      
-            while(true)
-            {
+        while(true)
+        {
       System.out.println("Choose one from the below options");
       System.out.println("1. Check balance");
-      System.out.println("2. Deposit amount");
-      System.out.println("3. Withdraw amount");
+      System.out.println("2. Withdraw amount");
+      System.out.println("3. Deposit amount");
       System.out.println("4. Exit");
-      
       int option = scanner.nextInt();
+
       if(option==4)
       {
+           System.out.println("Thank you for using MiniATM. Goodbye!");
         break;
       }
         
-     switch(option)
-     {
+      switch(option)
+      {
         case 1:
-        {
-            System.out.println("Balance in the account is " +balance);
-            break;
-        }
-
-         case 2:
-        {
-            System.out.println("Enter the amount you want to deposit");
-            
-            int depositbalance=scanner.nextInt();
-                 if(depositbalance<=0)
             {
-                System.out.println("Enter valid amount");
+                 miniatm.displayBalance(balance);
                 break;
             }
-            balance=balance+depositbalance;
-       
-            System.out.println("After deposit the balance is " +balance);
-            break;
-        }
-           case 3:
-        {
-            System.out.println("Enter the amount you want to withdraw");
-            
-            int withdrawbalance=scanner.nextInt();
-            if(withdrawbalance<=0)
+        case 2:
             {
-                System.out.println("Enter valid amount");
-                break;
+             System.out.println("Enter withdraw amount ");
+             withdraw=scanner.nextInt();
+             if(withdraw>balance)
+             {
+                 System.out.println("Insufficient funds");
+             }
+             else
+             {
+             balance=miniatm.withdraw(balance,withdraw);
+            miniatm.displayBalance(balance);
+             }
+             break;
             }
-            if(withdrawbalance>balance)
+             case 3:
             {
-                System.out.println("insufficient funds");
-                break;
+            System.out.println("Enter deposit amount ");
+             deposit=scanner.nextInt();
+             if(deposit<=0)
+             {
+                 System.out.println("Enter valid amount");
+             }
+             else
+             {
+             balance=miniatm.deposit(balance,deposit);
+            miniatm.displayBalance(balance);
+             }
+             break;
             }
-            balance=balance-withdrawbalance;
-            System.out.println("After withdrawal the balance is " +balance);
-            break;
-        }
-            case 4:
-        {
-           break;
-        }
-        default:
-        {
-            System.out.println("Enter a valid number please");
-        }
-     }
-       
-        
-       }
+           
+                default:
+                {
+                    System.out.println("Enter a valid number");
+                }
+      }
+  
     }
-
+}
 }
